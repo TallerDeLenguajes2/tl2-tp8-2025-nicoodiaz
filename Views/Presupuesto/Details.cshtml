@@ -1,0 +1,54 @@
+@using System.ComponentModel.DataAnnotations.Schema
+@model Presupuesto
+@{
+    string titulo = "";
+    ViewData["Title"] = titulo;
+    
+}
+
+@if(Model != null)
+{
+    <section class="d-flex align-item-center mb-4">
+        <h2 class="h4 m-0">@Model.NombreDestinatario</h2>
+    </section>
+
+    <h3 class="d-flex align-items-center justify-content-between mb-4 text h3">@Model.FechaCreacion</h3>
+
+    <article class="card shadow-sm mb-3">
+        <section class="card-body">
+            <div>
+                <span class="fw-semibold">Monto sin IVA:</span>
+                <span class="h5 m-0">@Model.MontoPresupuesto()</span>
+
+                <span class="mx-2 text-muted">|</span>
+
+                <span class="fw-semibold">con IVA:</span>
+                <span class="h5 m-0">@Model.MontoPresupuestoConIva()</span>
+            </div>
+        </section>
+    </article>
+
+    <article class="card shadow-sm">
+        <section class="card-body">
+            <h3 class="h6 text-uppercase text-muted mb-3">Detalles</h3>
+            <ol class="list-group list-group-numbered">
+                @foreach(var p in Model.Detalles)
+                {
+                    decimal precio = p.Producto.Precio * p.Cantidad;
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <p>@p.Producto.Descripcion => @p.Cantidad</p> <p class="badge bg-primary rounded-pill">@precio</p>
+                    </li>
+                }
+            </ol>
+        </section>
+    </article>
+    titulo = $"Presupuesto {Model.IdPresupuesto}";
+
+}
+else
+{
+    <article class="alert alert-warning" role="alert">
+      No se encontró presupuesto con ese id
+    </article>
+    titulo = "Producto NN";
+}

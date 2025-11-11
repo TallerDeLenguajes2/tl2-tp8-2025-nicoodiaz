@@ -1,0 +1,49 @@
+@model List<Presupuesto>
+@{
+    ViewData["Title"] = "Presupuestos";
+}
+
+<article>
+    <section>
+        <h1 class="h4 m-0">Presupuestos</h1>
+        <a class="btn bt-primary btn-outline-secondary" asp-controller="Presupuesto" asp-action="Crear">Agregar un presupuesto</a>
+    </section>
+
+    <section class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Destinatario</th>
+                    <th class="text-end" style="width: 160px;">Monto + IVA</th>
+                    <th class="text-center" style="width: 280px;">Detalles</th>
+                    <th class="text-center" style="width: 280px;">Mas Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var p in Model)
+                {
+                    <tr>
+                        <td>@p.IdPresupuesto</td>
+                        <td>@p.NombreDestinatario</td>
+                        <td>@p.MontoPresupuestoConIva()</td>
+                        <td>
+                            <section class="btn-group" aria-label="Detalles">
+                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="Details" asp-route-id="@p.IdPresupuesto">Ver mas</a>
+                            </section>
+                        </td>
+                        <td>
+                            <section class="btn-group" aria-label="Mas Opciones">
+                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="">Agregar Producto</a>
+                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="">Eliminar</a>
+                            </section>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <a class="btn btn-outline-secondary">Volver al Index</a>
+    </section>
+</article>
