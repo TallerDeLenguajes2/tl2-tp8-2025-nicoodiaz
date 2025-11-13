@@ -17,4 +17,10 @@ public class ProductoController : Controller
         List<Producto> productos = _productoRepository.ObtenerTodosProductos();
         return View(productos);
     }
+    [HttpGet]
+    public IActionResult Details(int id)
+    {
+        Producto producto = _productoRepository.ObtenerProductoXId(id);
+        return producto != null ? View(producto) : NotFound();
+    }
 }

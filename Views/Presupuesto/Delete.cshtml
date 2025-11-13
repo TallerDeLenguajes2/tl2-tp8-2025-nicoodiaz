@@ -1,0 +1,22 @@
+@model Presupuesto
+
+@if (Model != null) {
+    <h1>
+    @Model.NombreDestinatario
+    @Model.MontoPresupuesto() | (@Model.MontoPresupuestoConIva() con IVA)
+    </h1>
+    <ol>
+        @foreach(PresupuestoDetalle p in Model.Detalles){
+        <li>
+        @{decimal precioFinal = p.Producto.Precio * p.Cantidad;}
+        @p.Producto.Descripcion x @p.Cantidad (@precioFinal)
+        </li> 
+        }
+    </ol>
+    <form asp-controller="Presupuesto" asp-action="Delete" method="post">
+        <input type="hidden" asp-for="IdPresupuesto" value="@Model.IdPresupuesto">
+        <input type="submit" class="btn btn-danger" value="Delete">
+    </form>
+} else {
+  <h1>No se encontro presupuesto con el id </h1>
+}

@@ -6,7 +6,7 @@
 <article>
     <section>
         <h1 class="h4 m-0">Presupuestos</h1>
-        <a class="btn bt-primary btn-outline-secondary" asp-controller="Presupuesto" asp-action="Crear">Agregar un presupuesto</a>
+        <a class="btn btn-primary btn-outline-secondary" asp-controller="Presupuesto" asp-action="Create">Agregar un presupuesto</a>
     </section>
 
     <section class="table-responsive">
@@ -34,8 +34,10 @@
                         </td>
                         <td>
                             <section class="btn-group" aria-label="Mas Opciones">
-                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="">Agregar Producto</a>
-                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="">Eliminar</a>
+@*                                 <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="#nada">Agregar Producto</a> *@
+                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="Delete" asp-route-id="@p.IdPresupuesto">Eliminar</a>
+                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="Edit" asp-route-id="@p.IdPresupuesto">Editar</a>
+
                             </section>
                         </td>
                     </tr>
@@ -44,6 +46,6 @@
         </table>
     </section>
     <section>
-        <a class="btn btn-outline-secondary">Volver al Index</a>
+        <a class="btn btn-outline-secondary" asp-controller="Presupuesto" asp-action="Index">Volver al Index</a>
     </section>
 </article>

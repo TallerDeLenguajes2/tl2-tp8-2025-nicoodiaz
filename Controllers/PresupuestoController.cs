@@ -11,6 +11,7 @@ public class PresupuestoController : Controller
         _presupuestoRepository = new PresupuestosRepository();
     }
 
+            //ACCIONES PARA PODER LISTAR
     [HttpGet]
     public IActionResult Index()
     {
@@ -23,5 +24,40 @@ public class PresupuestoController : Controller
     {
         Presupuesto presupuesto = _presupuestoRepository.ObtenerDetallesPorId(id);
         return presupuesto != null ? View(presupuesto) : NotFound();
+    }
+
+    //ACCIONES PARA CREAR
+    [HttpGet]
+    public IActionResult Create() => View();
+
+    [HttpPost]
+    public IActionResult Create(Presupuesto nuevoPresupuesto)
+    {
+        _presupuestoRepository.CrearPresupuesto(nuevoPresupuesto);
+        return RedirectToAction("Index");
+    }
+
+    [HttpGet]
+    public IActionResult Edit(int id) => View(_presupuestoRepository.ObtenerDetallesPorId(id));
+
+    [HttpPost]
+    public IActionResult Edit(int id, Presupuesto nuevoPresupuesto)
+    {
+        _presupuestoRepository.ModificarPresupuesto(id, nuevoPresupuesto);
+        return RedirectToAction("Index");
+    }
+
+    [HttpGet]
+    public IActionResult Delete(int id)
+    {
+        Presupuesto presu = _presupuestoRepository.ObtenerDetallesPorId(id);
+        return View(presu);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(Presupuesto presu)
+    {
+        _presupuestoRepository.EliminarPresupuesto(presu.IdPresupuesto);
+        return RedirectToAction("Index");
     }
 }

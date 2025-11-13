@@ -140,6 +140,20 @@ public class PresupuestosRepository : IPresupuestosRepository
 
         conection.Close();
     }
+    public void ModificarPresupuesto(int id, Presupuesto nuevoPresu)
+    {
+        using var conection = new SqliteConnection(cadenaConexion);
+        conection.Open();
+
+        string queryConsulta = "UPDATE Presupuestos SET NombreDestinatario = @nombre, FechaCreacion = @fecha WHERE idPresupuesto = @id";
+        using SqliteCommand command = new SqliteCommand(queryConsulta, conection);
+        command.Parameters.Add(new SqliteParameter("@nombre", nuevoPresu.NombreDestinatario));
+        command.Parameters.Add(new SqliteParameter("@fecha", nuevoPresu.FechaCreacion));
+        command.Parameters.Add(new SqliteParameter("@id", id));
+
+        command.ExecuteNonQuery();
+        conection.Close();
+    }
     public void EliminarPresupuesto(int idPresupuesto)
     {
         using var conection = new SqliteConnection(cadenaConexion);//Creo la conexion mediante el path de la BD
