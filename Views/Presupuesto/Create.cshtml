@@ -1,4 +1,4 @@
-@model Presupuesto
+@model PresupuestoViewModel
 <form asp-controller="Presupuesto" asp-action="Create">
   <section class="mb-3">
     <label asp-for="NombreDestinatario" class="form-label"></label>
@@ -11,6 +11,10 @@
     <span asp-validation-for="FechaCreacion" class="text-danger"></span>
 
   </section>
-  <input type="hidden" value="@DateTime.Now" asp-for="FechaCreacion">
+@*   <input type="hidden" value="@DateTime.Now" asp-for="FechaCreacion"> *@
   <button type="submit" class="btn btn-primary">Crear</button>
 </form>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

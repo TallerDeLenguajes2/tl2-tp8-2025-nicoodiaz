@@ -1,4 +1,4 @@
-@model Producto
+@model ProductoViewModel
 
 <section class="d-flex justify-content-center align-items-center" style="height: 70vh;">
     <article class="border rounded p-5">
@@ -6,10 +6,12 @@
             <section class="form-group p-2">
                 <label asp-for="Descripcion" class="form-label">Descripcion</label>
                 <input type="text" asp-for="Descripcion" class="form-control-sm" value="@Model.Descripcion">
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
             </section>
             <section class="form-group d-flex justify-content-between p-2">
                 <label asp-for="Precio" class="form-label">Precio</label>
                 <input type="number" asp-for="Precio" class="form-control-sm" value="@Model.Precio">
+        <span asp-validation-for="Precio" class="text-danger"></span>
             </section>
             <input type="hidden" asp-for="IdProducto" value="@Model.IdProducto"> 
             <section class="form-group p-2">
@@ -20,3 +22,7 @@
 
     </article>
 </section>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}
