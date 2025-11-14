@@ -1,13 +1,33 @@
 @model List<Producto>
-@{
-    ViewData["Title"] = "Productos";
-}
+<article>
+    <section>
+        <a class="btn btn-primary" asp-controller="Producto" asp-action="Create">Crear Producto</a>
+    </section>
 
-<ul>
-    @foreach (var producto in Model)
-    {
-        <li>
-            @producto.Descripcion
-        </li>
-    }
-</ul>
+    <h2 class="text-center">Listado de productos</h2>
+    <section>
+        <section>
+            <table class="table table-bordered bordered-info">
+            <thead class="text-center">
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th colspan="2">Acciones</th>
+            </thead>
+            <tbody>
+            @{
+                foreach (var item in Model) // envia @item.IdProducto el id a su controlador
+                {
+                    <tr>
+                        <td class="text-start">@item.Descripcion</td>
+                        <td class="text-center">@item.Precio</td>
+
+                        <td class="text-center"><a asp-controller="Producto" asp-action="Edit" asp-route-id="@item.IdProducto" class="btn btn-secondary">Modificar</a></td>
+                        <td class="text-center"><a asp-controller="Producto" asp-action="Delete" asp-route-id="@item.IdProducto" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+        </section>
+    </section>
+</article>

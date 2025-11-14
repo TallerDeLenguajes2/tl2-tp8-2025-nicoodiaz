@@ -1,0 +1,17 @@
+@model Producto
+<section class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+    <article class="border rounded p-5 bg-light">
+        <p class="text-center">Confirmar eliminacion</p>
+        <section>
+            <section>
+                <p class="text-center">@Model.Descripcion</p>
+                <p class="text-center">@Model.Precio</p>
+            </section>
+        <form asp-controller="Producto" asp-action="Delete" method="post">
+            <input type="hidden" asp-for="IdProducto" value="@Model.IdProducto">
+            <input type="submit" class="btn btn-danger" value="Eliminar">
+        </form>
+            <a asp-controller="Producto" asp-action="Index" class="btn btn-primary m-3">Cancelar</a>
+        </section>
+    </article>
+</section>
