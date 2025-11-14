@@ -32,19 +32,19 @@
                 {
                     decimal precio = p.Producto.Precio * p.Cantidad;
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <p>@p.Producto.Descripcion => @p.Cantidad <a asp-controller="Producto" asp-action="Details" asp-route-id="@p.Producto.IdProducto">Ver mas</a></p> <p class="badge bg-primary rounded-pill">@precio</p>
+                        <p>@p.Producto.Descripcion => @p.Cantidad @* <a asp-controller="Producto" asp-action="Details" asp-route-id="@p.Producto.IdProducto">Ver mas</a></p> *@ <p class="badge bg-primary rounded-pill">@precio</p>
                     </li>
                 }
             </ol>
         </section>
     </article>
     <div class="d-flex gap-2 my-3">
-      <a class="btn btn-danger" asp-controller="Presupuestos" asp-action="Delete" asp-route-id="@Model.IdPresupuesto">
+@*       <a class="btn btn-danger" asp-controller="Presupuestos" asp-action="Delete" asp-route-id="@Model.IdPresupuesto">
         Eliminar Presupuesto
       </a>
-
-      <a class="btn btn-primary" asp-controller="Presupuestos" asp-action="Create" asp-route-id="@Model.IdPresupuesto">
-        Agregar Producto
+ *@
+      <a class="btn btn-primary" asp-controller="Presupuesto" asp-action="Index" asp-route-id="@Model.IdPresupuesto">
+        Volver
       </a>
     </div>
     titulo = $"Presupuesto {Model.IdPresupuesto}";

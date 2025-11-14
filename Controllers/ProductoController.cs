@@ -59,8 +59,7 @@ public class ProductoController : Controller
     [HttpGet]
     public IActionResult Edit(int id)
     {
-        var producto = _productoRepository.ObtenerProductoXId(id);
-        return View(producto);
+        return View(new ProductoViewModel(_productoRepository.ObtenerProductoXId(id)));
     }
 
     [HttpPost]

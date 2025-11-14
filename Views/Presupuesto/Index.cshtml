@@ -34,7 +34,7 @@
                         </td>
                         <td>
                             <section class="btn-group" aria-label="Mas Opciones">
-@*                                 <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="#nada">Agregar Producto</a> *@
+                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="AgregarProducto" asp-route-id="@p.IdPresupuesto">Agregar Producto</a>
                                 <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="Delete" asp-route-id="@p.IdPresupuesto">Eliminar</a>
                                 <a class="btn btn-sm btn-outline-secondary" asp-controller="Presupuesto" asp-action="Edit" asp-route-id="@p.IdPresupuesto">Editar</a>
 

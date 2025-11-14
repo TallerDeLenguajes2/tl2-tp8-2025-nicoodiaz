@@ -114,7 +114,7 @@ public class PresupuestoController : Controller
             return View(model);
         }
         //Si no entra al if, es porque es valido llamo al repo para guardar la relacion
-        _presupuestoRepository.AgregarProducto(model.IdPresupuesto, model.IdProducto, model.Cantidad);
+        _presupuestoRepository.AgregarProducto(model.IdProducto, model.IdPresupuesto, model.Cantidad);
         return RedirectToAction(nameof(Details), new {id = model.IdPresupuesto});
     }
 }

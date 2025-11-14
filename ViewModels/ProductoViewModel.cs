@@ -4,6 +4,7 @@ using tl2_tp8_2025_nicoodiaz;
 
 public class ProductoViewModel
 {
+    public ProductoViewModel() {}
     public ProductoViewModel(Producto p)
     {
         IdProducto = p.IdProducto;
